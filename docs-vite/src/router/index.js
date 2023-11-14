@@ -17,13 +17,28 @@ export default route(function (/* { store, ssrContext } */) {
     : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
 
   const Router = createRouter({
-    scrollBehavior: () => ({ left: 0, top: 0 }),
+    scrollBehavior (to, from, savedPosition) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          if (to.hash !== undefined && to.hash !== '' && document) {
+            const el = document.getElementById(to.hash.substring(1))
+
+            if (el !== null) {
+              resolve({ left: 0, top: el.offsetTop - el.scrollHeight })
+              return
+            }
+          }
+
+          resolve(savedPosition || { left: 0, top: 0 })
+        }, 100)
+      })
+    },
     routes,
 
     // Leave this as is and make changes in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
-    history: createHistory(process.env.VUE_ROUTER_BASE)
+    history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
 
   return Router

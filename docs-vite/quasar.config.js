@@ -12,16 +12,20 @@
 const { configure } = require('quasar/wrappers');
 
 
-module.exports = configure(function (/* ctx */) {
+module.exports = configure(function (ctx) {
   return {
-    eslint: {
-      // fix: true,
-      // include: [],
-      // exclude: [],
-      // rawOptions: {},
-      warnings: true,
-      errors: true
-    },
+    // https://quasar.dev/quasar-cli/supporting-ts
+    supportTS: false,
+
+    // TODO remove?
+    // eslint: {
+    //   // fix: true,
+    //   // include: [],
+    //   // exclude: [],
+    //   // rawOptions: {},
+    //   warnings: true,
+    //   errors: true
+    // },
 
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
     // preFetch: true,
@@ -30,8 +34,7 @@ module.exports = configure(function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
-      
-      
+      'register.js'
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
@@ -42,8 +45,8 @@ module.exports = configure(function (/* ctx */) {
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
-      // 'mdi-v5',
-      // 'fontawesome-v6',
+      // 'mdi-v6',
+      'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
       // 'line-awesome',
@@ -53,17 +56,28 @@ module.exports = configure(function (/* ctx */) {
       'material-icons', // optional, you are not bound to it
     ],
 
-    // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
+    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      target: {
-        browser: [ 'es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1' ],
-        node: 'node16'
-      },
+      vueRouterMode: 'history', // available values: 'hash', 'history'
 
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      // TODO remove?
+      // target: {
+      //   browser: [ 'es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1' ],
+      //   node: 'node16'
+      // },
+
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
+      transpile: true,
+
+      // Add dependencies for transpiling with Babel (Array of string/regex)
+      // (from node_modules, which are by default not transpiled).
+      // Applies only if "transpile" is set to true.
+      transpileDependencies: [
+        /quasar-ui-json-api-viewer[\\/]src/,
+        /quasar-ui-example-viewer[\\/]src/
+      ],
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
@@ -79,21 +93,39 @@ module.exports = configure(function (/* ctx */) {
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
 
-      
+
       // vitePlugins: [
       //   [ 'package-name', { ..options.. } ]
       // ]
+
+      // TODO is this required with Vite?
+      // Options below are automatically set depending on the env, set them if you want to override
+      // extractCSS: false,
+
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
-      // https: true
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
+      https: false,
+      port: 8090,
+      // next line for testing watchOptions issue
+      // watchOptions: {
+      //   ignored: [
+      //     /node_modules([\\]+|\/)+(?!my-package-name)/
+      //   ]
+      // }
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
     framework: {
-      config: {},
+      config: {
+        dark: 'auto',
+        loadingBar: {
+          color: 'red',
+          position: 'top'
+        }
+      },
 
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
@@ -106,7 +138,16 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Dark',
+        'Dialog',
+        'LoadingBar',
+        'LocalStorage',
+        'Meta',
+        'Notify',
+        'Platform',
+        'Screen'
+      ]
     },
 
     // animations: 'all', // --- includes all animations
@@ -142,6 +183,7 @@ module.exports = configure(function (/* ctx */) {
                       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
+        ctx.prod ? 'compression' : '',
         'render' // keep this as last one
       ]
     },
@@ -193,10 +235,13 @@ module.exports = configure(function (/* ctx */) {
         // win32metadata: { ... }
       },
 
+      // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
+      nodeIntegration: true,
+
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'docs-vite'
+        appId: 'dev1'
       }
     },
 
@@ -210,4 +255,4 @@ module.exports = configure(function (/* ctx */) {
       // extendBexManifestJson (json) {}
     }
   }
-});
+})
