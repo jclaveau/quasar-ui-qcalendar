@@ -985,6 +985,6 @@ const menu = [
   }
 ]
 
-// export default menu
-module.exports = menu
-module.exports.default = menu
+export default menu
+// module.exports = menu
+// module.exports.default = menu

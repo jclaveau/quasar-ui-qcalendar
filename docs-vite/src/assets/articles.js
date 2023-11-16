@@ -23,27 +23,28 @@ const toTitleCase = (str) => {
 
 const todayDate = new Date()
 
-export default require.context('../pages/latest-news/articles', true, /^\.\/.*\.md$/)
-  .keys()
-  .map(page => page.slice(2).replace('.md', ''))
-  .filter(page => {
-    const [publishWhen] = page.split('_')
-    const publishDate = new Date(publishWhen)
-    return todayDate >= publishDate
-  })
-  .sort((a, b) => {
-    const [publishWhenA] = a.split('_')
-    const [publishWhenB] = b.split('_')
-    const dateA = new Date(publishWhenA), dateB = new Date(publishWhenB)
-    return dateB.valueOf - dateA.valueOf
-  })
-  .map(page => {
-    const [ publishWhen, articleName ] = page.split('_')
-    return {
-      component: () => import(`pages/latest-news/articles/${ page }.md`),
-      name: page,
-      title: toTitleCase(articleName),
-      path: `/latest-news/articles/${ page }`,
-      publish: publishWhen
-    }
-  })
+export default []
+// export default require.context('../pages/latest-news/articles', true, /^\.\/.*\.md$/)
+//   .keys()
+//   .map(page => page.slice(2).replace('.md', ''))
+//   .filter(page => {
+//     const [publishWhen] = page.split('_')
+//     const publishDate = new Date(publishWhen)
+//     return todayDate >= publishDate
+//   })
+//   .sort((a, b) => {
+//     const [publishWhenA] = a.split('_')
+//     const [publishWhenB] = b.split('_')
+//     const dateA = new Date(publishWhenA), dateB = new Date(publishWhenB)
+//     return dateB.valueOf - dateA.valueOf
+//   })
+//   .map(page => {
+//     const [ publishWhen, articleName ] = page.split('_')
+//     return {
+//       component: () => import(`pages/latest-news/articles/${ page }.md`),
+//       name: page,
+//       title: toTitleCase(articleName),
+//       path: `/latest-news/articles/${ page }`,
+//       publish: publishWhen
+//     }
+//   })

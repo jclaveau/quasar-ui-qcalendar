@@ -62,7 +62,7 @@ function parseMenuNode (node, __path) {
     menuRoutes.push({
       path: prefix,
       name: node.name,
-      component: () => import('pages/' + prefix.substring(1) + '.md')
+      component: () => import(/* @vite-ignore */ '../pages/' + prefix.substring(1) + '.md')
     })
   }
 }

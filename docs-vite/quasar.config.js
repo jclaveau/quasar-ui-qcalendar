@@ -7,12 +7,13 @@
 
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
+import Vue from '@vitejs/plugin-vue'
+import Markdown from 'vite-plugin-md'
+import markdownConfig from './build/markdown.js'
+import Components from 'unplugin-vue-components/vite'
+import { configure } from 'quasar/wrappers';
 
-
-const { configure } = require('quasar/wrappers');
-
-
-module.exports = configure(function (ctx) {
+export default configure(function (ctx) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
@@ -56,7 +57,7 @@ module.exports = configure(function (ctx) {
       'material-icons', // optional, you are not bound to it
     ],
 
-    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
+    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#build
     build: {
       vueRouterMode: 'history', // available values: 'hash', 'history'
 
@@ -90,13 +91,77 @@ module.exports = configure(function (ctx) {
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf (viteConf) {
+        // console.log(`viteConf before`, JSON.stringify(viteConf.plugins, null, 2))
+        viteConf.plugins.filter(plugin => plugin.name === 'vite:vue').forEach(plugin => {
+          // console.log(`plugin vite:vue`, JSON.stringify(plugin, null, 2))
+          plugin.options = () => ({
+            include: [/\.vue$/, /\.md$/],
+          })
+          // console.log(`plugin typeof vite:vue after`, JSON.stringify(typeof plugin, null, 2))
+          // console.log(`plugin.options vite:vue after`, JSON.stringify(plugin.options, null, 2))
+        })
+
+        // viteConf.splice(1, 1, {
+        //   name: 'vite:vue',
+        //   options: () => ({
+        //     include: [/\.vue$/, /\.md$/],
+        //   })
+        // })
+        viteConf.plugins.splice(1, 1, Vue({
+          include: [/\.vue$/, /\.md$/], // <--
+        }))
+
+        viteConf.plugins.push(Markdown({
+          markdownItOptions: {
+            ...markdownConfig.config
+            // html: true,
+            // linkify: true,
+            // typographer: true,
+          },
+          markdownItSetup(md) {
+            markdownConfig.usePlugins(md)
+            // add anchor links to your H[x] tags
+            // md.use(import('markdown-it-anchor'))
+            // add code syntax highlighting with Prism
+            // md.use(import('markdown-it-prism'))
+            // markdownConfig.wrapRender(md)
+          },
+        }))
+        viteConf.plugins.push(Components({
+          // https://github.com/unplugin/unplugin-vue-components#configuration
+          // extensions: ['vue'],
+          // extensions: ['vue', 'md'],
+          // dirs: ['src/components/page-parts'],
+          // deep: true,
+          // resolvers: [
+          //   // example of importing Vant
+          //   (componentName) => {
+          //     console.log(`componentName`, componentName)
+          //     return { name: componentName.slice(3), from: 'vant' }
+          //   },
+          // ],
+          importPathTransform: v => {
+            // console.log('importPathTransform', v)
+            return v
+          },
+        }))
+        console.log(`viteConf after`, JSON.stringify(viteConf.plugins, null, 2))
+      },
       // viteVuePluginOptions: {},
 
 
-      // vitePlugins: [
-      //   [ 'package-name', { ..options.. } ]
-      // ]
+      vitePlugins: [
+        // [ 'package-name', { ..options.. } ]
+        // ['@vitejs/plugin-vue', {
+        //   include: [/\.vue$/, /\.md$/],
+        // }],
+        ['vite-plugin-md'],
+        // Vue({
+        //   include: [/\.vue$/, /\.md$/], // <--
+        // }),
+        // Markdown(),
+      ]
 
       // TODO is this required with Vite?
       // Options below are automatically set depending on the env, set them if you want to override
@@ -106,7 +171,7 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
-      open: true, // opens browser window automatically
+      open: !true, // opens browser window automatically
       https: false,
       port: 8090,
       // next line for testing watchOptions issue
