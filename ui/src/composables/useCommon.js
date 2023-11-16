@@ -1,5 +1,5 @@
 // common composables
-import { computed } from 'vue'
+import { computed, toRaw } from 'vue'
 import {
   validateTimestamp,
   parseTimestamp,
@@ -12,6 +12,9 @@ import {
   getDayIdentifier,
   today
 } from '../utils/Timestamp.js'
+import{
+  deepToRaw,
+} from '../utils/deepToRaw.js'
 
 export const useCommonProps = {
   modelValue: { // v-model
@@ -176,21 +179,46 @@ export default function (props, {
     return arr && arr.length > 0 && arr.includes(timestamp.date)
   }
 
-  function checkDays (arr, timestamp) {
+  function checkDays (ranges, timestamp) {
     const days = {
       firstDay: false,
       betweenDays: false,
       lastDay: false
     }
 
-    // array must have two dates ('YYYY-MM-DD') in it
-    if (arr && arr.length === 2) {
+    ranges = deepToRaw(ranges)
+
+    if (!ranges || ranges.length === 0) {
+      return days
+    }
+
+    // Single range case: range must have two dates ('YYYY-MM-DD') in it
+    if (ranges.length === 2 && typeof(ranges[ 1 ]) === 'string' && typeof(ranges[ 2 ]) === 'string') {
+      ranges = [ranges]
+    }
+
+    if (ranges.map(range => Array.isArray(range)).includes(false)) {
+      // console.log({
+      //   areArrays: ranges.map(range => typeof(range) === 'array'),
+      //   ranges,
+      //   types: ranges.map(range => {
+      //     return {
+      //       range,
+      //       type: Array.isArray(range)
+      //     }
+      //   })
+      // })
+      throw new Error('Invalid argument for checkdays: ' + JSON.stringify(ranges, null, 2))
+    }
+
+    for (const range of ranges) {
+      range.sort()
       const current = getDayIdentifier(timestamp)
-      const first = getDayIdentifier(parsed(arr[ 0 ]))
-      const last = getDayIdentifier(parsed(arr[ 1 ]))
-      days.firstDay = first === current
-      days.lastDay = last === current
-      days.betweenDays = first < current && last > current
+      const first = getDayIdentifier(parsed(range[ 0 ]))
+      const last = getDayIdentifier(parsed(range[ 1 ]))
+      !days.firstDay && (days.firstDay = first === current)
+      !days.lastDay && (days.lastDay = last === current)
+      !days.betweenDays && (days.betweenDays = first < current && last > current)
     }
     return days
   }
