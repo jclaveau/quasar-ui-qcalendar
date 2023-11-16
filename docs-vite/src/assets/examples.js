@@ -1,5 +1,5 @@
 /*
- * Export files list for /pages folder
+ * Export files list for /examples folder
  */
 
 function kebabCase (str) {
@@ -16,15 +16,14 @@ function slugify (str) {
   return encodeURIComponent(String(str).trim().replace(/\s+/g, '-'))
 }
 
-export default require.context('../examples', true, /^\.\/.*\.vue$/)
-  .keys()
-  .map(page => page.slice(2).replace('.vue', ''))
-  .filter(page => page !== 'Index' && page !== 'Error404')
-  .map(page => {
+export default Object.entries(import.meta.glob("../examples/*.vue"))
+  .map(([componentPath, component]) => {
+    const name = componentPath.replace(/^\.\.\/examples\//, '').replace('.vue', '')
     return {
-      component: () => import(`../examples/${ page }.vue`),
-      name: page,
-      title: page + '.vue',
-      path: slugify(kebabCase(page))
+      path: slugify(kebabCase(name)),
+      name,
+      title: name + '.vue',
+      component
     }
   })
+  .filter(example => example.name !== 'Index' && example.name !== 'Error404') // TODO aren't they already removed?

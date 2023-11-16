@@ -1,16 +1,16 @@
-const markdownIt = require('markdown-it')
-const Prism = require('prismjs')
-const container = require('markdown-it-container')
-const emoji = require('markdown-it-emoji')
-const subscript = require('markdown-it-sub')
-const superscript = require('markdown-it-sup')
-const footnote = require('markdown-it-footnote')
-const deflist = require('markdown-it-deflist')
-const abbreviation = require('markdown-it-abbr')
-const insert = require('markdown-it-ins')
-const mark = require('markdown-it-mark')
-const taskLists = require('markdown-it-task-lists')
-const imsize = require('markdown-it-imsize')
+import markdownIt from 'markdown-it'
+import Prism from 'prismjs'
+import container from 'markdown-it-container'
+import emoji from 'markdown-it-emoji'
+import subscript from 'markdown-it-sub'
+import superscript from 'markdown-it-sup'
+import footnote from 'markdown-it-footnote'
+import deflist from 'markdown-it-deflist'
+import abbreviation from 'markdown-it-abbr'
+import insert from 'markdown-it-ins'
+import mark from 'markdown-it-mark'
+import taskLists from 'markdown-it-task-lists'
+import imsize from 'markdown-it-imsize'
 
 // const fm = require('front-matter')
 
@@ -238,7 +238,7 @@ function extendBlockQuote (md) {
 //   }
 // }
 
-const opts = {
+const config = {
   html: true,
   linkify: true,
   typographer: false,
@@ -246,39 +246,51 @@ const opts = {
   highlight
 }
 
-const md = markdownIt(opts)
-md.use(subscript)
-md.use(superscript)
-md.use(footnote)
-md.use(deflist)
-md.use(abbreviation)
-md.use(insert)
-md.use(mark)
-md.use(emoji)
-md.use(imsize)
-md.use(taskLists, { enabled: true, label: true, labelAfter: true })
+// const md = markdownIt(opts)
 
-function render (source) {
-  const tocData = []
-  extendHeading(md, tocData, true)
-  extendBlockQuote(md)
-  extendImage(md)
-  extendLink(md)
-  extendTable(md)
-  extendToken(md)
-  extendContainers(md)
-  // bug: this is causing numbers to show up twice
-  // extendFenceLineNumbers(md)
-
-  // const content = fm(source)
-  // source = removeFrontMatter(source)
-  const rendered = md.render(source)
-  // rendered = replaceFrontMatter(rendered, content.attributes)
-  // rendered = replaceToc(rendered, tocData)
-
-  return { rendered, tocData }
+const usePlugins = (md) => {
+  md.use(subscript)
+  md.use(superscript)
+  md.use(footnote)
+  md.use(deflist)
+  md.use(abbreviation)
+  md.use(insert)
+  md.use(mark)
+  md.use(emoji)
+  md.use(imsize)
+  md.use(taskLists, { enabled: true, label: true, labelAfter: true })
 }
 
-module.exports = {
-  render
+// function render
+
+let initialRender
+function wrapRender(md) {
+  initialRender = md.render
+  md.render = (source) => {
+    const tocData = []
+    extendHeading(md, tocData, true)
+    extendBlockQuote(md)
+    extendImage(md)
+    extendLink(md)
+    extendTable(md)
+    extendToken(md)
+    extendContainers(md)
+    // bug: this is causing numbers to show up twice
+    // extendFenceLineNumbers(md)
+
+    // const content = fm(source)
+    // source = removeFrontMatter(source)
+    const rendered = initialRender(source)
+    // rendered = replaceFrontMatter(rendered, content.attributes)
+    // rendered = replaceToc(rendered, tocData)
+
+    return { rendered, tocData }
+  }
+
+}
+
+export default {
+  config,
+  usePlugins,
+  wrapRender,
 }
