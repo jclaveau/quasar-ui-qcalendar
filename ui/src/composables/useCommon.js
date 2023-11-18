@@ -231,6 +231,8 @@ export default function (props, {
       'q-past-day': firstDay !== true && betweenDays !== true && lastDay !== true && isSelected !== true && outside !== true && timestamp.past,
       'q-future-day': firstDay !== true && betweenDays !== true && lastDay !== true && isSelected !== true && outside !== true && timestamp.future,
       'q-outside': outside, // outside the current month
+      'q-outside-before': outside && (timestamp.day > 15), // before the current month
+      'q-outside-after':  outside && (timestamp.day < 15), // after the current month
       'q-current-day': timestamp.current,
       'q-selected': isSelected,
       'q-range-first': firstDay === true,
