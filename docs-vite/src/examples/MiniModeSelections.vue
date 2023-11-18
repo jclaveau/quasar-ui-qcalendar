@@ -416,16 +416,17 @@ export default defineComponent({
     QCalendarMonth
   },
   setup () {
-    const selectedDate = ref(today()),
-      calendar = ref(null),
-      anchorTimestamp = ref(null),
-      otherTimestamp = ref(null),
-      mouseDown = ref(false),
-      mobile = ref(false),
-      hover = ref(false),
-      editedRange = ref(null),
-      dateRanges = ref(new DateRangeList),
-      currentRangeOrigin = ref(null),
+    const selectedDate = ref(today())
+    const calendar = ref(null)
+    const anchorTimestamp = ref(null)
+    const otherTimestamp = ref(null)
+    const mouseDown = ref(false)
+    const mobile = ref(false)
+    const hover = ref(false)
+    const editedRange = ref(null)
+    const dateRanges = ref(new DateRangeList)
+    const currentRangeOrigin = ref(null)
+
     const startEndDates = computed(() => dateRanges.value.toSelectedStartEndDatesProp())
     const selectedDates = computed(() => dateRanges.value.toSelectedDatesProp())
 
