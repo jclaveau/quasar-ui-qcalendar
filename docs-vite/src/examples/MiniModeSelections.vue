@@ -27,9 +27,11 @@
           mini-mode
           no-active-date
           enable-outside-days
-          :hover="hover"
           animated
           bordered
+          transition-prev="slide-down"
+          transition-next="slide-up"
+          :hover="hover"
           @mousedown-day="onMouseDownDay"
           @mouseup-day="onMouseUpDay"
           @mousemove-day="onMouseMoveDay"
