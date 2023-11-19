@@ -37,7 +37,7 @@
     "schedule"
   ],
   "dependencies": {
-    "@quasar/quasar-ui-qcalendar": "^4.0.0-beta.16"
+    "@quasar/quasar-ui-qcalendar": "https://gitpkg.now.sh/jclaveau/quasar-ui-qcalendar/ui?hiphiphip-dev"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
