@@ -1,0 +1,149 @@
+/*!
+ * @quasar/quasar-ui-qcalendar v4.0.0-beta.16
+ * (c) 2024 Jeff Galbraith <jeff@quasar.dev>
+ * Released under the MIT License.
+ */
+.q-calendar--roll-right-leave-active, .q-calendar--roll-left-leave-active, .q-calendar--roll-up-leave-active, .q-calendar--roll-down-leave-active, .q-calendar--slide-right-leave-active, .q-calendar--slide-left-leave-active, .q-calendar--slide-up-leave-active, .q-calendar--slide-down-leave-active, .q-calendar--jump-right-leave-active, .q-calendar--jump-left-leave-active, .q-calendar--jump-up-leave-active, .q-calendar--jump-down-leave-active, .q-calendar--fade-leave-active, .q-calendar--scale-leave-active, .q-calendar--rotate-leave-active, .q-calendar--spin-leave-active, .q-calendar--flip-leave-active {
+  position: absolute;
+}
+.q-calendar--roll-right-enter-active, .q-calendar--roll-right-leave-active, .q-calendar--roll-left-enter-active, .q-calendar--roll-left-leave-active, .q-calendar--roll-up-enter-active, .q-calendar--roll-up-leave-active, .q-calendar--roll-down-enter-active, .q-calendar--roll-down-leave-active, .q-calendar--slide-right-enter-active, .q-calendar--slide-right-leave-active, .q-calendar--slide-left-enter-active, .q-calendar--slide-left-leave-active, .q-calendar--slide-up-enter-active, .q-calendar--slide-up-leave-active, .q-calendar--slide-down-enter-active, .q-calendar--slide-down-leave-active {
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.q-calendar--roll-right-enter-from {
+  transform: translate3d(100%, 0, 0) rotate(-360deg);
+}
+.q-calendar--roll-right-leave-to {
+  transform: translate3d(-100%, 0, 0) rotate(0deg);
+}
+.q-calendar--roll-left-enter-from {
+  transform: translate3d(-100%, 0, 0) rotate(360deg);
+}
+.q-calendar--roll-left-leave-to {
+  transform: translate3d(100%, 0, 0) rotate(0deg);
+}
+.q-calendar--roll-up-enter-from {
+  transform: translate3d(0, 100%, 0) rotate(360deg);
+}
+.q-calendar--roll-up-leave-to {
+  transform: translate3d(0, -100%, 0) rotate(0deg);
+}
+.q-calendar--roll-down-enter-from {
+  transform: translate3d(0, -100%, 0) rotate(-360deg);
+}
+.q-calendar--roll-down-leave-to {
+  transform: translate3d(0, 100%, 0) rotate(0deg);
+}
+.q-calendar--slide-right-enter-from {
+  transform: translate3d(100%, 0, 0);
+}
+.q-calendar--slide-right-leave-to {
+  transform: translate3d(-100%, 0, 0);
+}
+.q-calendar--slide-left-enter-from {
+  transform: translate3d(-100%, 0, 0);
+}
+.q-calendar--slide-left-leave-to {
+  transform: translate3d(100%, 0, 0);
+}
+.q-calendar--slide-up-enter-from {
+  transform: translate3d(0, 100%, 0);
+}
+.q-calendar--slide-up-leave-to {
+  transform: translate3d(0, -100%, 0);
+}
+.q-calendar--slide-down-enter-from {
+  transform: translate3d(0, -100%, 0);
+}
+.q-calendar--slide-down-leave-to {
+  transform: translate3d(0, 100%, 0);
+}
+.q-calendar--jump-right-enter-active, .q-calendar--jump-right-leave-active, .q-calendar--jump-left-enter-active, .q-calendar--jump-left-leave-active, .q-calendar--jump-up-enter-active, .q-calendar--jump-up-leave-active, .q-calendar--jump-down-enter-active, .q-calendar--jump-down-leave-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+.q-calendar--jump-right-enter-from, .q-calendar--jump-right-leave-to, .q-calendar--jump-left-enter-from, .q-calendar--jump-left-leave-to, .q-calendar--jump-up-enter-from, .q-calendar--jump-up-leave-to, .q-calendar--jump-down-enter-from, .q-calendar--jump-down-leave-to {
+  opacity: 0;
+}
+.q-calendar--jump-right-enter-from {
+  transform: translate3d(15px, 0, 0);
+}
+.q-calendar--jump-right-leave-to {
+  transform: translate3d(-15px, 0, 0);
+}
+.q-calendar--jump-left-enter-from {
+  transform: translate3d(-15px, 0, 0);
+}
+.q-calendar--jump-left-leave-to {
+  transform: translateX(15px);
+}
+.q-calendar--jump-up-enter-from {
+  transform: translate3d(0, 15px, 0);
+}
+.q-calendar--jump-up-leave-to {
+  transform: translate3d(0, -15px, 0);
+}
+.q-calendar--jump-down-enter-from {
+  transform: translate3d(0, -15px, 0);
+}
+.q-calendar--jump-down-leave-to {
+  transform: translate3d(0, 15px, 0);
+}
+.q-calendar--fade-enter-active, .q-calendar--fade-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+.q-calendar--fade-enter-from, .q-calendar--fade-leave-to {
+  opacity: 0;
+}
+.q-calendar--scale-enter-active, .q-calendar--scale-leave-active {
+  transition: opacity 0.3s, transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.q-calendar--scale-enter-from, .q-calendar--scale-leave-to {
+  opacity: 0;
+  transform: scale3d(0, 0, 1);
+}
+.q-calendar--rotate-enter-active, .q-calendar--rotate-leave-active {
+  transition: opacity 0.3s, transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform-style: preserve-3d;
+}
+.q-calendar--rotate-enter-from, .q-calendar--rotate-leave-to {
+  opacity: 0;
+  transform: scale3d(0, 0, 1) rotate3d(0, 0, 1, -90deg);
+}
+.q-calendar--spin-enter-active, .q-calendar--spin-leave-active {
+  transition: opacity 0.3s, transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform-style: preserve-3d;
+}
+.q-calendar--spin-enter-from, .q-calendar--spin-leave-from, .q-calendar--spin-leave-to {
+  opacity: 0;
+  transform: scale3d(0, 0, 1) rotate3d(0, 0, 1, -720deg);
+}
+.q-calendar--flip-right-enter-active, .q-calendar--flip-right-leave-active, .q-calendar--flip-left-enter-active, .q-calendar--flip-left-leave-active, .q-calendar--flip-up-enter-active, .q-calendar--flip-up-leave-active, .q-calendar--flip-down-enter-active, .q-calendar--flip-down-leave-active {
+  transition: transform 0.3s;
+  backface-visibility: hidden;
+}
+.q-calendar--flip-right-enter-to, .q-calendar--flip-right-leave-from, .q-calendar--flip-left-enter-to, .q-calendar--flip-left-leave-from, .q-calendar--flip-up-enter-to, .q-calendar--flip-up-leave-from, .q-calendar--flip-down-enter-to, .q-calendar--flip-down-leave-from {
+  transform: perspective(400px) rotate3d(-1, 1, 0, 0deg);
+}
+.q-calendar--flip-right-enter-from {
+  transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+}
+.q-calendar--flip-right-leave-to {
+  transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+}
+.q-calendar--flip-left-enter-from {
+  transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+}
+.q-calendar--flip-left-leave-to {
+  transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+}
+.q-calendar--flip-up-enter-from {
+  transform: perspective(400px) rotate3d(-1, 0, 0, 180deg);
+}
+.q-calendar--flip-up-leave-to {
+  transform: perspective(400px) rotate3d(-1, 0, 0, -180deg);
+}
+.q-calendar--flip-down-enter-from {
+  transform: perspective(400px) rotate3d(-1, 0, 0, -180deg);
+}
+.q-calendar--flip-down-leave-to {
+  transform: perspective(400px) rotate3d(-1, 0, 0, 180deg);
+}
