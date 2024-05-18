@@ -12,7 +12,7 @@
     "src"
   ],
   "scripts": {
-    "lint": "eslint --ext .js,.vue src",
+    "lint": "eslint --cache --ext .js,.vue src",
     "lint-fix": "eslint --ext .js,.vue src --fix",
     "dev": "cd dev && yarn dev && cd ..",
     "dev:umd": "yarn build && node build/script.open-umd.js",
