@@ -1,0 +1,74 @@
+name: Automatic -dist branch
+
+on:
+  push:
+
+jobs:
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "'STORE_PATH=$(pnpm store path --silent)'"
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        shell: bash
+        run: pnpm install
+
+      - name: Build
+        shell: bash
+        run: pnpm --filter '@quasar/quasar-ui-qcalendar' run build
+        env:
+          npm_config_workspace_concurrency: '1'
+          NODE_OPTIONS: --max_old_space_size=6144
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Create new branch if it doesn't exist
+        id: create_branch
+        run: |
+          CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          DIST_BRANCH="${CURRENT_BRANCH}-dist"
+          git push origin --delete ${DIST_BRANCH} || true
+          git checkout -b ${DIST_BRANCH}
+        shell: bash
+
+      - name: Add and commit dist folder
+        run: |
+          # remove dist/ from gitignore
+          mv .gitignore .gitignore.bak
+          grep -v 'dist/' .gitignore.bak > .gitignore 
+          # cat .gitignore
+
+          git add -f 'ui/dist/**'
+
+          git commit -m "Add dist folders content"
+          git push origin HEAD
+        shell: bash

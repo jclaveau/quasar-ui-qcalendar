@@ -1,8 +1,0 @@
-# Testing
-/test/jest/coverage
-
-demo/node_modules
-
-./dist
-
-.eslintcache
