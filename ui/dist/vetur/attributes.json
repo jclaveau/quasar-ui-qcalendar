@@ -1,0 +1,1174 @@
+{
+  "q-calendar/model-value": {
+    "type": "string",
+    "description": "v-model; When set as `YYYY-MM-DD`, the calendar will display the current view on this date. If empty, then it will be changed to the current date which will be emitted"
+  },
+  "q-calendar/mode": {
+    "type": "string",
+    "description": "Tells QCalendar (wrapper) which calendar component to use"
+  },
+  "q-calendar/view": {
+    "type": "string",
+    "description": "The type of calendar view to be displayed"
+  },
+  "q-calendar/dark": {
+    "type": "boolean",
+    "description": "Places a calendar in dark mode"
+  },
+  "q-calendar/bordered": {
+    "type": "boolean",
+    "description": "Places a border around the calendar"
+  },
+  "q-calendar/now": {
+    "type": "string",
+    "description": "This is the currently displayed date (highlighted). If not set, then the current date is used"
+  },
+  "q-calendar/weekdays": {
+    "type": "array",
+    "description": "The normal weekdays array looks like this `[0,1,2,3,4,5,6]` where 0=Sunday, 1=Monday, etc. A week that starts on Monday, would look like this: `[1,2,3,4,5,6,0]` and a 5-day workweek would look like this: `[1,2,3,4,5]`"
+  },
+  "q-calendar/no-aria": {
+    "type": "boolean",
+    "description": "Turns off automatical generation of aria labels for timestamps"
+  },
+  "q-calendar/no-active-date": {
+    "type": "boolean",
+    "description": "This controls whether the `q-active-date` css class is set when a user clicks on a date label (button)"
+  },
+  "q-calendar/disabled-days": {
+    "type": "array",
+    "description": "An array of string dates in the form `YYYY-MM-DD` that will be disabled. If an array is contained within the array with a start and end date, it will be treated as a range"
+  },
+  "q-calendar/disabled-before": {
+    "type": "string",
+    "description": "A date in the form `YYYY-MM-DD` where all dates before, and including, will be disabled"
+  },
+  "q-calendar/disabled-after": {
+    "type": "string",
+    "description": "A date in the form `YYYY-MM-DD` where all dates after, and including, will be disabled"
+  },
+  "q-calendar/locale": {
+    "type": "string",
+    "description": "Used to change the locale of the calendar"
+  },
+  "q-calendar/max-days": {
+    "type": "string",
+    "description": "The number of days to be displayed. Applicable only for custom-interval, scheduler and agenda views. Do not use with `week` or `month` views (set to 0 if setting the view dynamically)"
+  },
+  "q-calendar/hide-header": {
+    "type": "boolean",
+    "description": "Hide the calendar header."
+  },
+  "q-calendar/short-weekday-label": {
+    "type": "boolean",
+    "description": "Displays the weekday label in short format. For instance, 'Monday' would become 'Mon'"
+  },
+  "q-calendar/animated": {
+    "type": "boolean",
+    "description": "Turns on animation"
+  },
+  "q-calendar/sticky": {
+    "type": "boolean",
+    "description": "Turns on sticky resources and intervals"
+  },
+  "q-calendar/cell-width": {
+    "type": "string",
+    "description": "Sets day cell width and turns on sticky mode. Width must be css measurement"
+  },
+  "q-calendar/transition-prev": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for previous calendar view"
+  },
+  "q-calendar/transition-next": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for next calendar view"
+  },
+  "q-calendar/time-clicks-clamped": {
+    "type": "boolean",
+    "description": "Causes the returning timestamp time to be clamped to the interval it is in"
+  },
+  "q-calendar/drag-over-func": {
+    "type": "function",
+    "description": "The function to handle dragover events"
+  },
+  "q-calendar/drop-func": {
+    "type": "function",
+    "description": "The function to handle drop events"
+  },
+  "q-calendar/no-scroll": {
+    "type": "boolean",
+    "description": "Turns off the internal scrollbar. Useful if you want to handle your own scrolling"
+  },
+  "q-calendar/column-header-before": {
+    "type": "boolean",
+    "description": "Turns on the column-header-before scoped slot"
+  },
+  "q-calendar/column-header-after": {
+    "type": "boolean",
+    "description": "Turns on the column-header-after scoped slot"
+  },
+  "q-calendar/column-count": {
+    "type": "number|string",
+    "description": "Applicable only for day view. Show the same day x number of times in columns. Scoped slots get this data as index in passed object"
+  },
+  "q-calendar/column-index-start": {
+    "type": "number|string",
+    "description": "Applicable only for day view. This is the starting index. This allows you to create a paging system (next/prev) when using column-count property"
+  },
+  "q-calendar/short-interval-label": {
+    "type": "boolean",
+    "description": "Makes interval labels short"
+  },
+  "q-calendar/interval-height": {
+    "type": "number|string",
+    "description": "The maximum height in pixels for the interval height"
+  },
+  "q-calendar/interval-width": {
+    "type": "number|string",
+    "description": "The maximum width in pixels for the interval width"
+  },
+  "q-calendar/interval-style": {
+    "type": "function",
+    "description": "Gets called to provide custom styling of an interval"
+  },
+  "q-calendar/interval-minutes": {
+    "type": "number|string",
+    "description": "The number of minutes in an interval"
+  },
+  "q-calendar/interval-count": {
+    "type": "number|string",
+    "description": "The number intervals to use. If interval-minutes is set to 30 then you would set interval count to 48 – double that of regular"
+  },
+  "q-calendar/interval-start": {
+    "type": "number|string",
+    "description": "The starting interval"
+  },
+  "q-calendar/hour24-format": {
+    "type": "boolean",
+    "description": "Show intervals in 24 hour format"
+  },
+  "q-calendar/day-height": {
+    "type": "number|string",
+    "description": "The maximum height in pixels for the day height. Using 0 will make the rows variable height based on content."
+  },
+  "q-calendar/day-padding": {
+    "type": "string",
+    "description": "Overrides the padding to be used for a day element. You can use any CSS padding format"
+  },
+  "q-calendar/day-style": {
+    "type": "function",
+    "description": "Gets called to provide custom styling of a day"
+  },
+  "q-calendar/day-class": {
+    "type": "function",
+    "description": "Gets called to provide custom styling (via classes) of a day"
+  },
+  "q-calendar/min-weeks": {
+    "type": "number|string",
+    "description": "The minimum number of weeks to be displayed"
+  },
+  "q-calendar/short-month-label": {
+    "type": "boolean",
+    "description": "Makes the month label short. January becomes Jan..."
+  },
+  "q-calendar/show-work-weeks": {
+    "type": "boolean",
+    "description": "Show work weeks"
+  },
+  "q-calendar/no-default-header-btn": {
+    "type": "boolean",
+    "description": "Do not display the day button in the header"
+  },
+  "q-calendar/no-default-header-text": {
+    "type": "boolean",
+    "description": "Do not display the day text in the header"
+  },
+  "q-calendar/show-month-label": {
+    "type": "boolean",
+    "description": "Shows the month label - this occurs on the 1st of the month"
+  },
+  "q-calendar/show-day-of-year-label": {
+    "type": "boolean",
+    "description": "Show the day of the year - this occurs in the top right of each day element. If show-month-label is true, then that day is skipped"
+  },
+  "q-calendar/enable-outside-days": {
+    "type": "boolean",
+    "description": "By default, outside days are disabled in month view. Use the property to enable them."
+  },
+  "q-calendar/no-outside-days": {
+    "type": "boolean",
+    "description": "Do not display the labels of outside days"
+  },
+  "q-calendar/resources": {
+    "type": "array",
+    "description": "An array of objects with a single key of label. You can add other keys if you like, which will be passed back on the appropriate scoped slots"
+  },
+  "q-calendar/resource-key": {
+    "type": "string",
+    "description": "The key from the `resources` object that will be displayed"
+  },
+  "q-calendar/resource-height": {
+    "type": "number|string",
+    "description": "The maximum height in pixels for the resource height"
+  },
+  "q-calendar/resource-style": {
+    "type": "function",
+    "description": "Gets called to provide custom styling of a resource"
+  },
+  "q-calendar/selected-start-end-dates": {
+    "type": "array",
+    "description": "An array of two dates in format `YYYY-MM-DD` for selection purposes. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar/hover": {
+    "type": "boolean",
+    "description": "Changes the style `selected-start-end-dates` selection when in `mini-mode`. Typically, set this to `true` on `mousedown` and `false` on `mouseup`"
+  },
+  "q-calendar/selected-dates": {
+    "type": "array",
+    "description": "An array of string dates in the form `YYYY-MM-DD` that will be selected. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar/mini-mode": {
+    "type": "boolean|string",
+    "description": "When `true` puts the calendar into mini-mode. When `auto`, then the property `breakpoint` is used to determine when the calendar will be put into mini-mode"
+  },
+  "q-calendar/breakpoint": {
+    "type": "string",
+    "description": "This property is used when `mini-mode` is set with `auto`"
+  },
+  "q-calendar/month-label-size": {
+    "type": "string",
+    "description": "This property is used change the size of the month label button. This property is ignored when `mini-mode` is set to true"
+  },
+  "q-calendar/left-column-options": {
+    "type": "array",
+    "description": "An array of objects used to add columns to the left side of the agenda. Each object must have an id and label key or define the id object key using the `column-options-id` and the label using the `column-options-label` properties. The value of the id should be unique for each object. The object is passed to slots"
+  },
+  "q-calendar/right-column-options": {
+    "type": "array",
+    "description": "An array of objects used to add columns to the right side of the agenda. Each object must have an id and label key or define the id object key using the `column-options-id` and the label using the `column-options-label` properties. The value of the id should be unique for each object. The object is passed to slots"
+  },
+  "q-calendar/column-options-id": {
+    "type": "string",
+    "description": "The key in the object to use for `left-column-options` or `right-column-options` properties to define the id, otherwise `id` will be used"
+  },
+  "q-calendar/column-options-label": {
+    "type": "string",
+    "description": "The key in the object to use for `left-column-options` or `right-column-options` properties to define the label, otherwise `label` will be used"
+  },
+  "q-calendar-agenda/model-value": {
+    "type": "string",
+    "description": "When set as `YYYY-MM-DD`, the calendar will display the current view on this date. If empty, then it will be changed to the current date which will be emitted. Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive"
+  },
+  "q-calendar-agenda/view": {
+    "type": "array",
+    "description": "The type of calendar view to be displayed"
+  },
+  "q-calendar-agenda/now": {
+    "type": "string",
+    "description": "This is the currently displayed date (highlighted). If not set, then the current date is used"
+  },
+  "q-calendar-agenda/weekdays": {
+    "type": "array",
+    "description": "The normal weekdays array looks like this `[0,1,2,3,4,5,6]` where 0=Sunday, 1=Monday, etc. A week that starts on Monday, would look like this: `[1,2,3,4,5,6,0]` and a 5-day workweek would look like this: `[1,2,3,4,5]`"
+  },
+  "q-calendar-agenda/date-type": {
+    "type": "string",
+    "description": "Shows the current date button as either a circle, rounded or a square"
+  },
+  "q-calendar-agenda/weekday-align": {
+    "type": "string",
+    "description": "Determines the weekday (ie: Sunday, Monday, etc) alignment"
+  },
+  "q-calendar-agenda/date-align": {
+    "type": "string",
+    "description": "Determines the date (ie: 2, 3, etc) alignment"
+  },
+  "q-calendar-agenda/date-header": {
+    "type": "string",
+    "description": "Determines how the date header will be displayed"
+  },
+  "q-calendar-agenda/bordered": {
+    "type": "boolean",
+    "description": "Places a border around the calendar"
+  },
+  "q-calendar-agenda/dark": {
+    "type": "boolean",
+    "description": "Places the calendar into dark mode"
+  },
+  "q-calendar-agenda/no-aria": {
+    "type": "boolean",
+    "description": "Turns off aria strings in the calendar"
+  },
+  "q-calendar-agenda/no-active-date": {
+    "type": "boolean",
+    "description": "This controls whether the `q-active-date` css class is set when a user clicks on a date label (button)"
+  },
+  "q-calendar-agenda/short-weekday-label": {
+    "type": "boolean",
+    "description": "Displays the weekday label in short format. For instance, 'Monday' would become 'Mon'"
+  },
+  "q-calendar-agenda/no-default-header-text": {
+    "type": "boolean",
+    "description": "Do not display the weekday text in the header"
+  },
+  "q-calendar-agenda/no-default-header-btn": {
+    "type": "boolean",
+    "description": "Do not display the date button in the header"
+  },
+  "q-calendar-agenda/min-weekday-length": {
+    "type": "number|string",
+    "description": "The minimal number of weekday characters when truncation occurs"
+  },
+  "q-calendar-agenda/weekday-breakpoints": {
+    "type": "array",
+    "description": "The breakpoint widths where weekday truncation occurs (needs 2 values)"
+  },
+  "q-calendar-agenda/locale": {
+    "type": "string",
+    "description": "Used to change the locale of the calendar. Any acceptable locale can be used that is recognized by the browser. If the locale fails, then 'en-US' is the fallback"
+  },
+  "q-calendar-agenda/animated": {
+    "type": "boolean",
+    "description": "Turns on animated transitions"
+  },
+  "q-calendar-agenda/transition-prev": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for previous calendar display"
+  },
+  "q-calendar-agenda/transition-next": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for next calendar display"
+  },
+  "q-calendar-agenda/drag-enter-func": {
+    "type": "function",
+    "description": "The function to handle dragenter events"
+  },
+  "q-calendar-agenda/drag-over-func": {
+    "type": "function",
+    "description": "The function to handle dragover events. You must call in your `e.preventDefault()` for Drag and Drop to work properly"
+  },
+  "q-calendar-agenda/drag-leave-func": {
+    "type": "function",
+    "description": "The function to handle dragleave events"
+  },
+  "q-calendar-agenda/drop-func": {
+    "type": "function",
+    "description": "The function to handle drop events"
+  },
+  "q-calendar-agenda/selected-dates": {
+    "type": "array",
+    "description": "An array of string dates in the form `YYYY-MM-DD` that will be selected. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-agenda/selected-start-end-dates": {
+    "type": "array",
+    "description": "An array of two dates in format `YYYY-MM-DD` for selection purposes. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-agenda/hoverable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to be hovered"
+  },
+  "q-calendar-agenda/focusable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to receive focus"
+  },
+  "q-calendar-agenda/focus-type": {
+    "type": "array",
+    "description": "Describes what can become focusable"
+  },
+  "q-calendar-agenda/weekday-style": {
+    "type": "function",
+    "description": "Gets called to provide custom styling of a weekday"
+  },
+  "q-calendar-agenda/weekday-class": {
+    "type": "function",
+    "description": "Gets called to provide custom styling (via classes) of a weekday"
+  },
+  "q-calendar-agenda/day-height": {
+    "type": "number|string",
+    "description": "The maximum height in pixels for the day height. Using 0 will make the rows variable height based on content."
+  },
+  "q-calendar-agenda/day-min-height": {
+    "type": "number|string",
+    "description": "The minimum height to be used"
+  },
+  "q-calendar-agenda/max-days": {
+    "type": "string|number",
+    "description": "The number of days to be displayed. Do not use with `week` or `month` views (set to 0 if setting the view dynamically)"
+  },
+  "q-calendar-agenda/cell-width": {
+    "type": "string",
+    "description": "Sets day cell width and turns on sticky mode. Width must be css measurement"
+  },
+  "q-calendar-agenda/use-navigation": {
+    "type": "boolean",
+    "description": "Allows keyboard navigation"
+  },
+  "q-calendar-day/model-value": {
+    "type": "string",
+    "description": "When set as `YYYY-MM-DD`, the calendar will display the current view on this date. If empty, then it will be changed to the current date which will be emitted. Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive"
+  },
+  "q-calendar-day/view": {
+    "type": "array",
+    "description": "The type of calendar view to be displayed"
+  },
+  "q-calendar-day/now": {
+    "type": "string",
+    "description": "This is the currently displayed date (highlighted). If not set, then the current date is used"
+  },
+  "q-calendar-day/weekdays": {
+    "type": "array",
+    "description": "The normal weekdays array looks like this `[0,1,2,3,4,5,6]` where 0=Sunday, 1=Monday, etc. A week that starts on Monday, would look like this: `[1,2,3,4,5,6,0]` and a 5-day workweek would look like this: `[1,2,3,4,5]`"
+  },
+  "q-calendar-day/date-type": {
+    "type": "string",
+    "description": "Shows the current date button as either a circle, rounded or a square"
+  },
+  "q-calendar-day/weekday-align": {
+    "type": "string",
+    "description": "Determines the weekday (ie: Sunday, Monday, etc) alignment"
+  },
+  "q-calendar-day/date-align": {
+    "type": "string",
+    "description": "Determines the date (ie: 2, 3, etc) alignment"
+  },
+  "q-calendar-day/date-header": {
+    "type": "string",
+    "description": "Determines how the date header will be displayed"
+  },
+  "q-calendar-day/bordered": {
+    "type": "boolean",
+    "description": "Places a border around the calendar"
+  },
+  "q-calendar-day/dark": {
+    "type": "boolean",
+    "description": "Places the calendar into dark mode"
+  },
+  "q-calendar-day/no-aria": {
+    "type": "boolean",
+    "description": "Turns off aria strings in the calendar"
+  },
+  "q-calendar-day/no-active-date": {
+    "type": "boolean",
+    "description": "This controls whether the `q-active-date` css class is set when a user clicks on a date label (button)"
+  },
+  "q-calendar-day/short-weekday-label": {
+    "type": "boolean",
+    "description": "Displays the weekday label in short format. For instance, 'Monday' would become 'Mon'"
+  },
+  "q-calendar-day/no-default-header-text": {
+    "type": "boolean",
+    "description": "Do not display the weekday text in the header"
+  },
+  "q-calendar-day/no-default-header-btn": {
+    "type": "boolean",
+    "description": "Do not display the date button in the header"
+  },
+  "q-calendar-day/min-weekday-length": {
+    "type": "number|string",
+    "description": "The minimal number of weekday characters when truncation occurs"
+  },
+  "q-calendar-day/weekday-breakpoints": {
+    "type": "array",
+    "description": "The breakpoint widths where weekday truncation occurs (needs 2 values)"
+  },
+  "q-calendar-day/locale": {
+    "type": "string",
+    "description": "Used to change the locale of the calendar. Any acceptable locale can be used that is recognized by the browser. If the locale fails, then 'en-US' is the fallback"
+  },
+  "q-calendar-day/animated": {
+    "type": "boolean",
+    "description": "Turns on animated transitions"
+  },
+  "q-calendar-day/transition-prev": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for previous calendar display"
+  },
+  "q-calendar-day/transition-next": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for next calendar display"
+  },
+  "q-calendar-day/drag-enter-func": {
+    "type": "function",
+    "description": "The function to handle dragenter events"
+  },
+  "q-calendar-day/drag-over-func": {
+    "type": "function",
+    "description": "The function to handle dragover events. You must call in your `e.preventDefault()` for Drag and Drop to work properly"
+  },
+  "q-calendar-day/drag-leave-func": {
+    "type": "function",
+    "description": "The function to handle dragleave events"
+  },
+  "q-calendar-day/drop-func": {
+    "type": "function",
+    "description": "The function to handle drop events"
+  },
+  "q-calendar-day/selected-dates": {
+    "type": "array",
+    "description": "An array of string dates in the form `YYYY-MM-DD` that will be selected. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-day/selected-start-end-dates": {
+    "type": "array",
+    "description": "An array of two dates in format `YYYY-MM-DD` for selection purposes. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-day/hoverable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to be hovered"
+  },
+  "q-calendar-day/focusable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to receive focus"
+  },
+  "q-calendar-day/focus-type": {
+    "type": "array",
+    "description": "Describes what can become focusable"
+  },
+  "q-calendar-day/weekday-style": {
+    "type": "function",
+    "description": "Gets called to provide custom styling of a weekday"
+  },
+  "q-calendar-day/weekday-class": {
+    "type": "function",
+    "description": "Gets called to provide custom styling (via classes) of a weekday"
+  },
+  "q-calendar-day/day-height": {
+    "type": "number|string",
+    "description": "The maximum height in pixels for the day height. Using 0 will make the rows variable height based on content."
+  },
+  "q-calendar-day/day-min-height": {
+    "type": "number|string",
+    "description": "The minimum height to be used"
+  },
+  "q-calendar-day/max-days": {
+    "type": "string|number",
+    "description": "The number of days to be displayed. Do not use with `week` or `month` views (set to 0 if setting the view dynamically)"
+  },
+  "q-calendar-day/cell-width": {
+    "type": "string",
+    "description": "Sets day cell width and turns on sticky mode. Width must be css measurement"
+  },
+  "q-calendar-day/use-navigation": {
+    "type": "boolean",
+    "description": "Allows keyboard navigation"
+  },
+  "q-calendar-month/model-value": {
+    "type": "string",
+    "description": "When set as `YYYY-MM-DD`, the calendar will display the current view on this date. If empty, then it will be changed to the current date which will be emitted. Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive"
+  },
+  "q-calendar-month/now": {
+    "type": "string",
+    "description": "This is the currently displayed date (highlighted). If not set, then the current date is used"
+  },
+  "q-calendar-month/weekdays": {
+    "type": "array",
+    "description": "The normal weekdays array looks like this `[0,1,2,3,4,5,6]` where 0=Sunday, 1=Monday, etc. A week that starts on Monday, would look like this: `[1,2,3,4,5,6,0]` and a 5-day workweek would look like this: `[1,2,3,4,5]`"
+  },
+  "q-calendar-month/date-type": {
+    "type": "string",
+    "description": "Shows the current date button as either a circle, rounded or a square"
+  },
+  "q-calendar-month/weekday-align": {
+    "type": "string",
+    "description": "Determines the weekday (ie: Sunday, Monday, etc) alignment"
+  },
+  "q-calendar-month/date-align": {
+    "type": "string",
+    "description": "Determines the date (ie: 2, 3, etc) alignment"
+  },
+  "q-calendar-month/date-header": {
+    "type": "string",
+    "description": "Determines how the date header will be displayed"
+  },
+  "q-calendar-month/bordered": {
+    "type": "boolean",
+    "description": "Places a border around the calendar"
+  },
+  "q-calendar-month/dark": {
+    "type": "boolean",
+    "description": "Places the calendar into dark mode"
+  },
+  "q-calendar-month/no-aria": {
+    "type": "boolean",
+    "description": "Turns off aria strings in the calendar"
+  },
+  "q-calendar-month/no-active-date": {
+    "type": "boolean",
+    "description": "This controls whether the `q-active-date` css class is set when a user clicks on a date label (button)"
+  },
+  "q-calendar-month/short-weekday-label": {
+    "type": "boolean",
+    "description": "Displays the weekday label in short format. For instance, 'Monday' would become 'Mon'"
+  },
+  "q-calendar-month/no-default-header-text": {
+    "type": "boolean",
+    "description": "Do not display the weekday text in the header"
+  },
+  "q-calendar-month/no-default-header-btn": {
+    "type": "boolean",
+    "description": "Do not display the date button in the header"
+  },
+  "q-calendar-month/min-weekday-length": {
+    "type": "number|string",
+    "description": "The minimal number of weekday characters when truncation occurs"
+  },
+  "q-calendar-month/weekday-breakpoints": {
+    "type": "array",
+    "description": "The breakpoint widths where weekday truncation occurs (needs 2 values)"
+  },
+  "q-calendar-month/locale": {
+    "type": "string",
+    "description": "Used to change the locale of the calendar. Any acceptable locale can be used that is recognized by the browser. If the locale fails, then 'en-US' is the fallback"
+  },
+  "q-calendar-month/animated": {
+    "type": "boolean",
+    "description": "Turns on animated transitions"
+  },
+  "q-calendar-month/transition-prev": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for previous calendar display"
+  },
+  "q-calendar-month/transition-next": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for next calendar display"
+  },
+  "q-calendar-month/drag-enter-func": {
+    "type": "function",
+    "description": "The function to handle dragenter events"
+  },
+  "q-calendar-month/drag-over-func": {
+    "type": "function",
+    "description": "The function to handle dragover events. You must call in your `e.preventDefault()` for Drag and Drop to work properly"
+  },
+  "q-calendar-month/drag-leave-func": {
+    "type": "function",
+    "description": "The function to handle dragleave events"
+  },
+  "q-calendar-month/drop-func": {
+    "type": "function",
+    "description": "The function to handle drop events"
+  },
+  "q-calendar-month/selected-dates": {
+    "type": "array",
+    "description": "An array of string dates in the form `YYYY-MM-DD` that will be selected. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-month/selected-start-end-dates": {
+    "type": "array",
+    "description": "An array of two dates in format `YYYY-MM-DD` for selection purposes. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-month/hoverable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to be hovered"
+  },
+  "q-calendar-month/focusable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to receive focus"
+  },
+  "q-calendar-month/focus-type": {
+    "type": "array",
+    "description": "Describes what can become focusable"
+  },
+  "q-calendar-month/weekday-style": {
+    "type": "function",
+    "description": "Gets called to provide custom styling of a weekday"
+  },
+  "q-calendar-month/weekday-class": {
+    "type": "function",
+    "description": "Gets called to provide custom styling (via classes) of a weekday"
+  },
+  "q-calendar-month/day-height": {
+    "type": "number|string",
+    "description": "The maximum height in pixels for the day height. Using 0 will make the rows variable height based on content."
+  },
+  "q-calendar-month/day-min-height": {
+    "type": "number|string",
+    "description": "The minimum height to be used"
+  },
+  "q-calendar-month/max-days": {
+    "type": "string|number",
+    "description": "The number of days to be displayed"
+  },
+  "q-calendar-month/cell-width": {
+    "type": "string",
+    "description": "Sets day cell width and turns on sticky mode. Width must be css measurement"
+  },
+  "q-calendar-month/use-navigation": {
+    "type": "boolean",
+    "description": "Allows keyboard navigation"
+  },
+  "q-calendar-resource/model-value": {
+    "type": "string",
+    "description": "When set as `YYYY-MM-DD`, the calendar will display the current view on this date. If empty, then it will be changed to the current date which will be emitted. Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive"
+  },
+  "q-calendar-resource/now": {
+    "type": "string",
+    "description": "This is the currently displayed date (highlighted). If not set, then the current date is used"
+  },
+  "q-calendar-resource/weekdays": {
+    "type": "array",
+    "description": "The normal weekdays array looks like this `[0,1,2,3,4,5,6]` where 0=Sunday, 1=Monday, etc. A week that starts on Monday, would look like this: `[1,2,3,4,5,6,0]` and a 5-day workweek would look like this: `[1,2,3,4,5]`"
+  },
+  "q-calendar-resource/date-type": {
+    "type": "string",
+    "description": "Shows the current date button as either a circle, rounded or a square"
+  },
+  "q-calendar-resource/weekday-align": {
+    "type": "string",
+    "description": "Determines the weekday (ie: Sunday, Monday, etc) alignment"
+  },
+  "q-calendar-resource/date-align": {
+    "type": "string",
+    "description": "Determines the date (ie: 2, 3, etc) alignment"
+  },
+  "q-calendar-resource/date-header": {
+    "type": "string",
+    "description": "Determines how the date header will be displayed"
+  },
+  "q-calendar-resource/bordered": {
+    "type": "boolean",
+    "description": "Places a border around the calendar"
+  },
+  "q-calendar-resource/dark": {
+    "type": "boolean",
+    "description": "Places the calendar into dark mode"
+  },
+  "q-calendar-resource/no-aria": {
+    "type": "boolean",
+    "description": "Turns off aria strings in the calendar"
+  },
+  "q-calendar-resource/no-active-date": {
+    "type": "boolean",
+    "description": "This controls whether the `q-active-date` css class is set when a user clicks on a date label (button)"
+  },
+  "q-calendar-resource/short-weekday-label": {
+    "type": "boolean",
+    "description": "Displays the weekday label in short format. For instance, 'Monday' would become 'Mon'"
+  },
+  "q-calendar-resource/no-default-header-text": {
+    "type": "boolean",
+    "description": "Do not display the weekday text in the header"
+  },
+  "q-calendar-resource/no-default-header-btn": {
+    "type": "boolean",
+    "description": "Do not display the date button in the header"
+  },
+  "q-calendar-resource/min-weekday-length": {
+    "type": "number|string",
+    "description": "The minimal number of weekday characters when truncation occurs"
+  },
+  "q-calendar-resource/weekday-breakpoints": {
+    "type": "array",
+    "description": "The breakpoint widths where weekday truncation occurs (needs 2 values)"
+  },
+  "q-calendar-resource/locale": {
+    "type": "string",
+    "description": "Used to change the locale of the calendar. Any acceptable locale can be used that is recognized by the browser. If the locale fails, then 'en-US' is the fallback"
+  },
+  "q-calendar-resource/animated": {
+    "type": "boolean",
+    "description": "Turns on animated transitions"
+  },
+  "q-calendar-resource/transition-prev": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for previous calendar display"
+  },
+  "q-calendar-resource/transition-next": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for next calendar display"
+  },
+  "q-calendar-resource/drag-enter-func": {
+    "type": "function",
+    "description": "The function to handle dragenter events"
+  },
+  "q-calendar-resource/drag-over-func": {
+    "type": "function",
+    "description": "The function to handle dragover events. You must call in your `e.preventDefault()` for Drag and Drop to work properly"
+  },
+  "q-calendar-resource/drag-leave-func": {
+    "type": "function",
+    "description": "The function to handle dragleave events"
+  },
+  "q-calendar-resource/drop-func": {
+    "type": "function",
+    "description": "The function to handle drop events"
+  },
+  "q-calendar-resource/selected-dates": {
+    "type": "array",
+    "description": "An array of string dates in the form `YYYY-MM-DD` that will be selected. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-resource/selected-start-end-dates": {
+    "type": "array",
+    "description": "An array of two dates in format `YYYY-MM-DD` for selection purposes. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-resource/hoverable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to be hovered"
+  },
+  "q-calendar-resource/focusable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to receive focus"
+  },
+  "q-calendar-resource/focus-type": {
+    "type": "array",
+    "description": "Describes what can become focusable"
+  },
+  "q-calendar-resource/weekday-style": {
+    "type": "function",
+    "description": "Gets called to provide custom styling of a weekday"
+  },
+  "q-calendar-resource/weekday-class": {
+    "type": "function",
+    "description": "Gets called to provide custom styling (via classes) of a weekday"
+  },
+  "q-calendar-resource/day-height": {
+    "type": "number|string",
+    "description": "The maximum height in pixels for the day height. Using 0 will make the rows variable height based on content."
+  },
+  "q-calendar-resource/day-min-height": {
+    "type": "number|string",
+    "description": "The minimum height to be used"
+  },
+  "q-calendar-resource/max-days": {
+    "type": "string|number",
+    "description": "The number of days to be displayed"
+  },
+  "q-calendar-resource/cell-width": {
+    "type": "string",
+    "description": "Sets day cell width and turns on sticky mode. Width must be css measurement"
+  },
+  "q-calendar-resource/use-navigation": {
+    "type": "boolean",
+    "description": "Allows keyboard navigation"
+  },
+  "q-calendar-scheduler/model-value": {
+    "type": "string",
+    "description": "When set as `YYYY-MM-DD`, the calendar will display the current view on this date. If empty, then it will be changed to the current date which will be emitted. Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive"
+  },
+  "q-calendar-scheduler/now": {
+    "type": "string",
+    "description": "This is the currently displayed date (highlighted). If not set, then the current date is used"
+  },
+  "q-calendar-scheduler/weekdays": {
+    "type": "array",
+    "description": "The normal weekdays array looks like this `[0,1,2,3,4,5,6]` where 0=Sunday, 1=Monday, etc. A week that starts on Monday, would look like this: `[1,2,3,4,5,6,0]` and a 5-day workweek would look like this: `[1,2,3,4,5]`"
+  },
+  "q-calendar-scheduler/date-type": {
+    "type": "string",
+    "description": "Shows the current date button as either a circle, rounded or a square"
+  },
+  "q-calendar-scheduler/weekday-align": {
+    "type": "string",
+    "description": "Determines the weekday (ie: Sunday, Monday, etc) alignment"
+  },
+  "q-calendar-scheduler/date-align": {
+    "type": "string",
+    "description": "Determines the date (ie: 2, 3, etc) alignment"
+  },
+  "q-calendar-scheduler/date-header": {
+    "type": "string",
+    "description": "Determines how the date header will be displayed"
+  },
+  "q-calendar-scheduler/bordered": {
+    "type": "boolean",
+    "description": "Places a border around the calendar"
+  },
+  "q-calendar-scheduler/dark": {
+    "type": "boolean",
+    "description": "Places the calendar into dark mode"
+  },
+  "q-calendar-scheduler/no-aria": {
+    "type": "boolean",
+    "description": "Turns off aria strings in the calendar"
+  },
+  "q-calendar-scheduler/no-active-date": {
+    "type": "boolean",
+    "description": "This controls whether the `q-active-date` css class is set when a user clicks on a date label (button)"
+  },
+  "q-calendar-scheduler/short-weekday-label": {
+    "type": "boolean",
+    "description": "Displays the weekday label in short format. For instance, 'Monday' would become 'Mon'"
+  },
+  "q-calendar-scheduler/no-default-header-text": {
+    "type": "boolean",
+    "description": "Do not display the weekday text in the header"
+  },
+  "q-calendar-scheduler/no-default-header-btn": {
+    "type": "boolean",
+    "description": "Do not display the date button in the header"
+  },
+  "q-calendar-scheduler/min-weekday-length": {
+    "type": "number|string",
+    "description": "The minimal number of weekday characters when truncation occurs"
+  },
+  "q-calendar-scheduler/weekday-breakpoints": {
+    "type": "array",
+    "description": "The breakpoint widths where weekday truncation occurs (needs 2 values)"
+  },
+  "q-calendar-scheduler/locale": {
+    "type": "string",
+    "description": "Used to change the locale of the calendar. Any acceptable locale can be used that is recognized by the browser. If the locale fails, then 'en-US' is the fallback"
+  },
+  "q-calendar-scheduler/animated": {
+    "type": "boolean",
+    "description": "Turns on animated transitions"
+  },
+  "q-calendar-scheduler/transition-prev": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for previous calendar display"
+  },
+  "q-calendar-scheduler/transition-next": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for next calendar display"
+  },
+  "q-calendar-scheduler/drag-enter-func": {
+    "type": "function",
+    "description": "The function to handle dragenter events"
+  },
+  "q-calendar-scheduler/drag-over-func": {
+    "type": "function",
+    "description": "The function to handle dragover events. You must call in your `e.preventDefault()` for Drag and Drop to work properly"
+  },
+  "q-calendar-scheduler/drag-leave-func": {
+    "type": "function",
+    "description": "The function to handle dragleave events"
+  },
+  "q-calendar-scheduler/drop-func": {
+    "type": "function",
+    "description": "The function to handle drop events"
+  },
+  "q-calendar-scheduler/selected-dates": {
+    "type": "array",
+    "description": "An array of string dates in the form `YYYY-MM-DD` that will be selected. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-scheduler/selected-start-end-dates": {
+    "type": "array",
+    "description": "An array of two dates in format `YYYY-MM-DD` for selection purposes. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-scheduler/hoverable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to be hovered"
+  },
+  "q-calendar-scheduler/focusable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to receive focus"
+  },
+  "q-calendar-scheduler/focus-type": {
+    "type": "array",
+    "description": "Describes what can become focusable"
+  },
+  "q-calendar-scheduler/weekday-style": {
+    "type": "function",
+    "description": "Gets called to provide custom styling of a weekday"
+  },
+  "q-calendar-scheduler/weekday-class": {
+    "type": "function",
+    "description": "Gets called to provide custom styling (via classes) of a weekday"
+  },
+  "q-calendar-scheduler/day-height": {
+    "type": "number|string",
+    "description": "The maximum height in pixels for the day height. Using 0 will make the rows variable height based on content."
+  },
+  "q-calendar-scheduler/day-min-height": {
+    "type": "number|string",
+    "description": "The minimum height to be used"
+  },
+  "q-calendar-scheduler/max-days": {
+    "type": "string|number",
+    "description": "The number of days to be displayed. Do not use with `week` or `month` views (set to 0 if setting the view dynamically)"
+  },
+  "q-calendar-scheduler/cell-width": {
+    "type": "string",
+    "description": "Sets day cell width and turns on sticky mode. Width must be css measurement"
+  },
+  "q-calendar-scheduler/use-navigation": {
+    "type": "boolean",
+    "description": "Allows keyboard navigation"
+  },
+  "q-calendar-task/model-value": {
+    "type": "string",
+    "description": "When set as `YYYY-MM-DD`, the calendar will display the current view on this date. If empty, then it will be changed to the current date which will be emitted. Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive"
+  },
+  "q-calendar-task/model-tasks": {
+    "type": "array",
+    "description": "An array of Tasks that will be displayed"
+  },
+  "q-calendar-task/model-title": {
+    "type": "array",
+    "description": "An array of title items, each will be displayed via a slot in the title area"
+  },
+  "q-calendar-task/model-footer": {
+    "type": "array",
+    "description": "An array of footer items, each will be displayed via a slot in the footer (summary) area"
+  },
+  "q-calendar-task/task-key": {
+    "type": "number|string",
+    "description": "The key in an object to use as the ID (must be unique)"
+  },
+  "q-calendar-task/view": {
+    "type": "string",
+    "description": "Tells the calendar how to display the data"
+  },
+  "q-calendar-task/view-count": {
+    "type": "number",
+    "description": "The number of views to show. For instance, if the property `view` was `week`, then setting this property to 2 would show 2 weeks."
+  },
+  "q-calendar-task/task-width": {
+    "type": "number",
+    "description": "The number of pixels needed for the tasks column"
+  },
+  "q-calendar-task/now": {
+    "type": "string",
+    "description": "This is the currently displayed date (highlighted). If not set, then the current date is used"
+  },
+  "q-calendar-task/weekdays": {
+    "type": "array",
+    "description": "The normal weekdays array looks like this `[0,1,2,3,4,5,6]` where 0=Sunday, 1=Monday, etc. A week that starts on Monday, would look like this: `[1,2,3,4,5,6,0]` and a 5-day workweek would look like this: `[1,2,3,4,5]`"
+  },
+  "q-calendar-task/date-type": {
+    "type": "string",
+    "description": "Shows the current date button as either a circle, rounded or a square"
+  },
+  "q-calendar-task/weekday-align": {
+    "type": "string",
+    "description": "Determines the weekday (ie: Sunday, Monday, etc) alignment"
+  },
+  "q-calendar-task/date-align": {
+    "type": "string",
+    "description": "Determines the date (ie: 2, 3, etc) alignment"
+  },
+  "q-calendar-task/date-header": {
+    "type": "string",
+    "description": "Determines how the date header will be displayed"
+  },
+  "q-calendar-task/bordered": {
+    "type": "boolean",
+    "description": "Places a border around the calendar"
+  },
+  "q-calendar-task/dark": {
+    "type": "boolean",
+    "description": "Places the calendar into dark mode"
+  },
+  "q-calendar-task/no-aria": {
+    "type": "boolean",
+    "description": "Turns off automatical generation of aria labels for timestamps"
+  },
+  "q-calendar-task/no-active-date": {
+    "type": "boolean",
+    "description": "This controls whether the `q-active-date` css class is set when a user clicks on a date label (button)"
+  },
+  "q-calendar-task/short-weekday-label": {
+    "type": "boolean",
+    "description": "Displays the weekday label in short format. For instance, 'Monday' would become 'Mon'"
+  },
+  "q-calendar-task/no-default-header-text": {
+    "type": "boolean",
+    "description": "Do not display the weekday text in the header"
+  },
+  "q-calendar-task/no-default-header-btn": {
+    "type": "boolean",
+    "description": "Do not display the date button in the header"
+  },
+  "q-calendar-task/min-weekday-label": {
+    "type": "number|string",
+    "description": "The minimal number of weekday characters when truncation occurs"
+  },
+  "q-calendar-task/weekday-breakpoints": {
+    "type": "array",
+    "description": "The breakpoint widths where weekday truncation occurs (needs 2 values)"
+  },
+  "q-calendar-task/locale": {
+    "type": "string",
+    "description": "Used to change the locale of the calendar. Any acceptable locale can be used that is recognized by the browser. If the locale fails, then 'en-US' is the fallback"
+  },
+  "q-calendar-task/animated": {
+    "type": "boolean",
+    "description": "Turns on animated transitions"
+  },
+  "q-calendar-task/transition-prev": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for previous calendar display"
+  },
+  "q-calendar-task/transition-next": {
+    "type": "string",
+    "description": "When animated property is true, transition to use for next calendar display"
+  },
+  "q-calendar-task/disabled-days": {
+    "type": "array",
+    "description": "An array of string dates in the form `YYYY-MM-DD` that will be disabled. If an array is contained within the array with a start and end date, it will be treated as a range"
+  },
+  "q-calendar-task/disabled-before": {
+    "type": "string",
+    "description": "A date in the form `YYYY-MM-DD` where all dates before, and including, will be disabled"
+  },
+  "q-calendar-task/disabled-after": {
+    "type": "string",
+    "description": "A date in the form `YYYY-MM-DD` where all dates after, and including, will be disabled"
+  },
+  "q-calendar-task/disabled-weekdays": {
+    "type": "array",
+    "description": "Similar to `weekdays` property, except values included in this array are automatically made disabled"
+  },
+  "q-calendar-task/drag-enter-func": {
+    "type": "function",
+    "description": "The function to handle dragenter events"
+  },
+  "q-calendar-task/drag-over-func": {
+    "type": "function",
+    "description": "The function to handle dragover events. You must call in your `e.preventDefault()` for Drag and Drop to work properly"
+  },
+  "q-calendar-task/drag-leave-func": {
+    "type": "function",
+    "description": "The function to handle dragleave events"
+  },
+  "q-calendar-task/drop-func": {
+    "type": "function",
+    "description": "The function to handle drop events"
+  },
+  "q-calendar-task/selected-dates": {
+    "type": "array",
+    "description": "An array of string dates in the form `YYYY-MM-DD` that will be selected. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-task/selected-start-end-dates": {
+    "type": "array",
+    "description": "An array of two dates in format `YYYY-MM-DD` for selection purposes. Interval-based calendars use `YYYY-MM-DD HH:mm`"
+  },
+  "q-calendar-task/hoverable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to be hovered"
+  },
+  "q-calendar-task/focusable": {
+    "type": "boolean",
+    "description": "Allows certain cells within the calendar to receive focus"
+  },
+  "q-calendar-task/focus-type": {
+    "type": "array",
+    "description": "Describes what can become focusable"
+  },
+  "q-calendar-task/weekday-style": {
+    "type": "function",
+    "description": "Gets called to provide custom styling of a weekday"
+  },
+  "q-calendar-task/weekday-class": {
+    "type": "function",
+    "description": "Gets called to provide custom styling (via classes) of a weekday"
+  },
+  "q-calendar-task/day-height": {
+    "type": "number|string",
+    "description": "The maximum height in pixels for the day height. Using 0 will make the rows variable height based on content."
+  },
+  "q-calendar-task/day-min-height": {
+    "type": "number|string",
+    "description": "The minimum height to be used"
+  },
+  "q-calendar-task/max-days": {
+    "type": "string|number",
+    "description": "The number of days to be displayed. Do not use with `week` or `month` views (set to 0 if setting the view dynamically)"
+  },
+  "q-calendar-task/cell-width": {
+    "type": "string|number",
+    "description": "Sets day cell width and turns on sticky mode. Width is assumed to be in pixels"
+  },
+  "q-calendar-task/use-navigation": {
+    "type": "boolean",
+    "description": "Allows keyboard navigation"
+  }
+}
